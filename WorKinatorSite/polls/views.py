@@ -81,6 +81,7 @@ def CadastroProfissionalSaude(request):
             user.save()
             #return redirect('workinator:GetProfissionalSaude')
             #return JsonResponse({"status": True, "msg": "Registro adicionado com sucesso."})
+            #return redirect("workinator:Login")
             return render(request, "polls/login.html", {"form": form})
     else:
         form = CadastroProfissionalSaudeForm()
@@ -110,7 +111,8 @@ def CadastroPaciente(request):
                 Active = True
             )
             paciente.save()
-            return JsonResponse({"status": True, "msg": "Paciente adicionado com sucesso."})
+            return redirect("workinator:GetPacientesProfissional")
+            #return JsonResponse({"status": True, "msg": "Paciente adicionado com sucesso."})
     else:
         form = CadastroPacienteForm()
     return render(request, "polls/cadastropaciente.html", {'form': form})
@@ -136,7 +138,8 @@ def CadastroConsulta(request):
                 Active = True
             )
             consulta.save()
-            return JsonResponse({"status": True, "msg": "Consulta adicionada com sucesso."})
+            return redirect("workinator:GetConsultasProfissional")
+            #return JsonResponse({"status": True, "msg": "Consulta adicionada com sucesso."})
 
     return render(request, "polls/cadastroconsulta.html", {"form": form})
 
@@ -161,7 +164,8 @@ def AtualizaProfissionalSaude(request):
             profissional_saude.UpdatedAt = datetime.now(saoPauloTime)
             profissional_saude.save()
 
-            return JsonResponse({"status": True, "msg": "Registro atualizado com sucesso."})
+            return redirect("workinator:GetProfissionalSaude")
+            #return JsonResponse({"status": True, "msg": "Registro atualizado com sucesso."})
         else:
             return HttpResponseBadRequest("Erro nos dados enviados.")
 
@@ -188,7 +192,8 @@ def AtualizaPaciente(request):
             paciente.UpdatedAt = datetime.now(saoPauloTime)
             paciente.save()
 
-            return JsonResponse({"status": True, "msg": "Registro atualizado com sucesso."})
+            return redirect("workinator:GetPacientesProfissional")
+            #return JsonResponse({"status": True, "msg": "Registro atualizado com sucesso."})
         else:
             return HttpResponseBadRequest("Erro nos dados enviados.")
 
@@ -210,7 +215,8 @@ def AtualizaConsulta(request):
             consulta.UpdatedAt = datetime.now(saoPauloTime)
             consulta.save()
 
-            return JsonResponse({"status": True, "msg": "Registro atualizado com sucesso."})
+            return redirect("workinator:GetConsultasProfissional")
+            #return JsonResponse({"status": True, "msg": "Registro atualizado com sucesso."})
         else:
             return HttpResponseBadRequest("Erro nos dados enviados.")
 
@@ -229,7 +235,8 @@ def AtualizaConsultaObservacao(request):
             consulta.UpdatedAt = datetime.now(saoPauloTime)
             consulta.save()
 
-            return JsonResponse({"status": True, "msg": "Registro atualizado com sucesso."})
+            return redirect("workinator:GetConsultasPaciente")
+            #return JsonResponse({"status": True, "msg": "Registro atualizado com sucesso."})
         else:
             return HttpResponseBadRequest("Erro nos dados enviados.")
 
@@ -248,7 +255,8 @@ def DeleteProfissionalSaude(request):
         profissionalSaude.save()
         user.save()
 
-        return JsonResponse({"status": True, "msg": "Registro deletado com sucesso."})
+        return redirect("workinator:GetProfissionalSaude")
+        #return JsonResponse({"status": True, "msg": "Registro deletado com sucesso."})
 
     return render(request, "polls/deleteprofissionalsaude.html")
 
@@ -264,7 +272,8 @@ def DeletePaciente(request):
             paciente.UpdatedAt = datetime.now(saoPauloTime)
             paciente.save()
 
-            return JsonResponse({"status": True, "msg": "Registro deletado com sucesso."})
+            return redirect("workinator:GetPacientesProfissional")
+            #return JsonResponse({"status": True, "msg": "Registro deletado com sucesso."})
         else:
             return HttpResponseBadRequest("Erro nos dados enviados.")
 
@@ -282,7 +291,8 @@ def DeleteConsulta(request):
             consulta.UpdatedAt = datetime.now(saoPauloTime)
             consulta.save()
 
-            return JsonResponse({"status": True, "msg": "Registro deletado com sucesso."})
+            return redirect("workinator:GetConsultasProfissional")
+            #return JsonResponse({"status": True, "msg": "Registro deletado com sucesso."})
         else:
             return HttpResponseBadRequest("Erro nos dados enviados.")
 
